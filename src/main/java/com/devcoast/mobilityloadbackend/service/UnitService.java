@@ -5,6 +5,7 @@ import com.devcoast.mobilityloadbackend.repository.UnitRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UnitService {
@@ -19,5 +20,9 @@ public class UnitService {
 
     public Unit saveUnit(Unit unit){
         return unitRepository.save(unit);
+    }
+
+    public Optional<Unit> getUnitById(Long unitId){
+       return unitRepository.findById(unitId);
     }
 }
