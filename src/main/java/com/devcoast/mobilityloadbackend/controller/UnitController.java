@@ -28,7 +28,7 @@ public class UnitController {
     }
 
     @GetMapping("/units/{id}")
-    public ResponseEntity<Unit> retrieveUnitById(@PathVariable("id") long unitId) {
+    public ResponseEntity<Unit> retrieveUnitById(@PathVariable("id") Long unitId) {
         return unitService.getUnitById(unitId)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
