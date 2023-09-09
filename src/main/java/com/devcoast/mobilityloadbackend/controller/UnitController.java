@@ -4,10 +4,8 @@ import com.devcoast.mobilityloadbackend.entity.Unit;
 import com.devcoast.mobilityloadbackend.service.UnitService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -27,5 +25,12 @@ public class UnitController {
     @PostMapping("/units")
     public ResponseEntity<Unit> saveUnit(@RequestBody Unit unit){
         return new ResponseEntity<>(unitService.saveUnit(unit), HttpStatus.OK);
+    }
+
+    @GetMapping("/units/{id}")
+    public ResponseEntity<Unit> retrieveUnitById(@PathVariable("id") long unitId) {
+        return unitService.getUnitById(unitId)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
