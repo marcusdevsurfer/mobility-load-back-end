@@ -25,6 +25,11 @@ public class CarrierService {
         return carrierRepository.findById(carrierId);
     }
 
+    //Method to retrieve carrier by email
+    public Optional<Carrier> getCarrierByEmail(String email){
+        return carrierRepository.findByEmail(email);
+    }
+
     //Method for save carrier
     public Carrier saveCarrier(Carrier carrier){
         return carrierRepository.save(carrier);
