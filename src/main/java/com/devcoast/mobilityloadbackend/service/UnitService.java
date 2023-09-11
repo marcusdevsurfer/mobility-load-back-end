@@ -25,4 +25,9 @@ public class UnitService {
     public Optional<Unit> getUnitById(Long unitId){
        return unitRepository.findById(unitId);
     }
+
+    public List<Unit> getUnitsByCarrierId(Long carrierId){
+        return unitRepository.findByCarrierId(carrierId);
+
+    }
 }
