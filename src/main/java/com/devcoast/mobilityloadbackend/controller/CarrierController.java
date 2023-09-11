@@ -32,6 +32,16 @@ public class CarrierController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    //Retrieve Carrier by Email
+    @GetMapping("/carriers/query")
+    public ResponseEntity<Carrier> retrieveCarrierByEmail(
+            @RequestParam("email") String email){
+        return carrierService.getCarrierByEmail(email)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+
+    }
+
     //Retrieve units by Carrier ID
     @GetMapping("/carriers/{id}/units")
     public ResponseEntity<List<Unit>> retrieveUnitsByCarrierId(@PathVariable("id") Long carrierId){
