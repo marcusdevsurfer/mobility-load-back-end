@@ -8,25 +8,23 @@ import java.util.List;
 public class Carrier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long carrierId;
+    private Long id;
 
     @Column(name = "carrier_name")
     private String name;
 
     @Column(name = "carrier_email")
     private String email;
-    @OneToMany
-    private List<Unit> unitList;
 
     public Carrier() {
     }
 
     public Long getCarrierId() {
-        return carrierId;
+        return id;
     }
 
-    public void setCarrierId(Long carrierId) {
-        this.carrierId = carrierId;
+    public void setCarrierId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,13 +41,5 @@ public class Carrier {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Unit> getUnitList() {
-        return unitList;
-    }
-
-    public void setUnitList(List<Unit> unitList) {
-        this.unitList = unitList;
     }
 }
